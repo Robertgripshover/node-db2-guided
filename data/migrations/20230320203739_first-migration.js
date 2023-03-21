@@ -6,7 +6,7 @@ exports.up = async function(knex) {
   await knex.schema.createTable('fruit', table => {
     table.increments('fruit_id') 
     //^^^^makes an id column that increments in the db with title fruit_id
-    table.string('fruit_name', 100).notNullable() //<<< makes it so it has a not NULL constraint
+    table.string('fruit_name', 100).notNullable().unique() //<<< makes it so it has a not NULL constraint and the .unique() obviouly makes it only be able to have one
     //^^^^makes an string name column in the db with title fruit_id
     //and the '100' means that we don't want over 100 charaters, it's like a contraint
     table.decimal('avg_weight_oz').notNullable()
